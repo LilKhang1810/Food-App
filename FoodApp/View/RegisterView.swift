@@ -23,6 +23,8 @@ struct RegisterView: View {
                     .foregroundColor(Color(red: 0.18, green: 0.86, blue: 0.74))
                     .padding(.leading,20)
                 TextField("Full Name", text: $registerVM.name).textFieldStyle(OvalTextFieldStyle())
+                    .disableAutocorrection(true)
+                                            .autocapitalization(.none)
             }
             .padding()
             VStack(alignment: .leading){
@@ -31,6 +33,8 @@ struct RegisterView: View {
                     .foregroundColor(Color(red: 0.18, green: 0.86, blue: 0.74))
                     .padding(.leading,20)
                 TextField("Email", text: $registerVM.email).textFieldStyle(OvalTextFieldStyle())
+                    .disableAutocorrection(true)
+                                            .autocapitalization(.none)
             }
             .padding()
             VStack(alignment:.leading){
@@ -38,7 +42,8 @@ struct RegisterView: View {
                     .font(Font.custom("Bebas Neue", size: 15))
                     .foregroundColor(Color(red: 0.18, green: 0.86, blue: 0.74))
                     .padding(.leading,20)
-                SecureField("Password", text: $registerVM.password).textFieldStyle(OvalTextFieldStyle())
+                SecureField("Password", text: $registerVM.password).textFieldStyle(OvalTextFieldStyle()).disableAutocorrection(true)
+                    .autocapitalization(.none)
             }
             .padding()
             Button(

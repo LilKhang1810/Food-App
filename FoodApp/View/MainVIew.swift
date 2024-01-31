@@ -9,13 +9,19 @@ import SwiftUI
 
 struct MainVIew: View {
     @AppStorage("pageOnboard") var pageOnboard = 1
+    @StateObject var mainVm = MainViewController()
     var body: some View {
-        NavigationStack{
-            if pageOnboard > totalPage {
-                GetStartedView()
+        NavigationView{
+            if mainVm.isSignIn,!mainVm.currentUserId.isEmpty{
+                ContentView()
             }
             else{
-                OnBoardView()
+                if pageOnboard > totalPage {
+                    GetStartedView()
+                }
+                else{
+                    OnBoardView()
+                }
             }
         }
     }

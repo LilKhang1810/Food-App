@@ -10,7 +10,7 @@ import FirebaseAuth
 struct LoginView: View {
     @State var email: String = ""
     @State var password: String = ""
-    @StateObject var authenVM = AuthencationViewModel()
+    @EnvironmentObject var authenVM : AuthencationViewModel
     @Environment(\.dismiss) var dismiss
     var body: some View {
         NavigationStack{
@@ -25,6 +25,8 @@ struct LoginView: View {
                         .foregroundColor(Color(red: 0.18, green: 0.86, blue: 0.74))
                         .padding(.leading,20)
                     TextField("Email", text: $email).textFieldStyle(OvalTextFieldStyle())
+                        .disableAutocorrection(true)
+                                                .autocapitalization(.none)
                 }
                 .padding()
                 VStack(alignment:.leading){
@@ -33,6 +35,8 @@ struct LoginView: View {
                         .foregroundColor(Color(red: 0.18, green: 0.86, blue: 0.74))
                         .padding(.leading,20)
                     SecureField("Password", text: $password).textFieldStyle(OvalTextFieldStyle())
+                        .disableAutocorrection(true)
+                                                .autocapitalization(.none)
                 }
                 .padding()
                 NavigationLink(destination: ContentView()) {
@@ -95,6 +99,7 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
+            .environmentObject(AuthencationViewModel())
     }
 }
 struct OvalTextFieldStyle: TextFieldStyle {

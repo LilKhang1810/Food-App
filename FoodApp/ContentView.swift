@@ -8,12 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var autenVM = AuthencationViewModel()
+    @StateObject var productVM = ProductViewController()
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
+            Button("Sign Out") {
+                autenVM.signOut()
+            }
+            Button("Print ProductList"){
+                
+                print(productVM.products)
+            }
         }
         .padding()
     }

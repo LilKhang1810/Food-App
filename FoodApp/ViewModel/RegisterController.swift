@@ -7,7 +7,7 @@
 
 import Foundation
 import FirebaseAuth
-import Firebase
+import FirebaseFirestore
 class RegisterViewModel: ObservableObject{
     @Published var name = ""
     @Published var email = ""
