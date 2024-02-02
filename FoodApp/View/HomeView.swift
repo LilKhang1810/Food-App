@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
-
+import FirebaseAuth
 import SDWebImageSwiftUI
 struct HomeView: View {
     @StateObject var productVM = ProductViewController()
     @StateObject var brandVM = BrandViewModel()
-    
+    @EnvironmentObject var authenVm: AuthencationViewModel
     var popularDishes: [Product] {
         productVM.products.filter{$0.popular == true}
     }
@@ -21,7 +21,7 @@ struct HomeView: View {
                 HStack{
                     HStack{
                         Text("Hello,")
-                        Text("Khang")
+                        Text("\(authenVm.userName)")
                             .foregroundColor(.accentColor) + Text("!")
                     }
                     .font(
@@ -116,37 +116,44 @@ struct HomeView: View {
                     .padding(.vertical,20)
                 }
                 VStack(){
-                    Text("Popular in your area")
-                        .font(Font.custom("Bebas Neue", size: 20))
-                        .foregroundColor(Color(red: 0.17, green: 0.17, blue: 0.17))
+                    HStack{
+                        Text("Popular in your area")
+                            .font(Font.custom("Bebas Neue", size: 20))
+                            .foregroundColor(Color(red: 0.17, green: 0.17, blue: 0.17))
+                        Spacer()
+                        NavigationLink(destination: PopularProductView()) {
+                            Text("View all >>")
+                                .font(Font.custom("Bebas Neue", size: 13))
+                        }
+                    }
                 }
                 .frame(maxWidth: .infinity,maxHeight: .none, alignment: .leading)
                 .padding(.horizontal,30)
-                .padding(.vertical,15)
+                .padding(.top,15)
                 ScrollView(.vertical,showsIndicators: false){
                     VStack{
                         LazyVGrid(columns: Array(repeating: GridItem(), count: 2),spacing: 20){
-                            ForEach(popularDishes,id:\.self) { item in
-                                NavigationLink(destination: ContentView()) {
+                            ForEach(popularDishes.prefix(4),id:\.self) { item in
+                                NavigationLink(destination: DetailDishesView(product: Product(id: item.id, name: item.name, price: item.price, img_url: item.img_url, brand: item.brand, popular: item.popular, type: item.type), selectedType: item.type)) {
                                     ProductFrameView(img_url: item.img_url, name: item.name, price: item.price)
                                 }
                             }
                         }
                     }
                     .frame(height: 500)
-                    .padding(.vertical,25)
+                    .padding(.vertical,15)
                 }
                 
                 VStack(spacing:30){
-                    NavigationLink(destination: Text("Chicken Fried")) {
+                    NavigationLink(destination: TypeView(selectedType: "chicken fried")) {
                         FrameTypeFood(title: "Chicken Fried", img: "chicken fried")
                     }
                     .shadow(color: Color("AccentColor").opacity(0.7), radius: 10, x: 0, y:10 )
-                    NavigationLink(destination: Text("Pizza")) {
+                    NavigationLink(destination: TypeView(selectedType: "pizza")) {
                         FrameTypeFood(title: "Pizza", img: "pizza")
                     }
                     .shadow(color: Color("AccentColor").opacity(0.7), radius: 10, x: 0, y:10 )
-                    NavigationLink(destination: Text("Hamburger")) {
+                    NavigationLink(destination: TypeView(selectedType: "hamburger")) {
                         FrameTypeFood(title: "Hamburger", img: "hamburger")
                     }
                     .shadow(color: Color("AccentColor").opacity(0.7), radius: 10, x: 0, y:10 )
@@ -160,7 +167,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-        
+            .environmentObject(AuthencationViewModel())
     }
 }
 

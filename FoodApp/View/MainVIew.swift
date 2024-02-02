@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainVIew: View {
     @AppStorage("pageOnboard") var pageOnboard = 1
+    @EnvironmentObject var viewModel : AuthencationViewModel
     @StateObject var mainVm = MainViewController()
     var body: some View {
         NavigationView{
@@ -30,6 +31,7 @@ struct MainVIew: View {
 struct MainVIew_Previews: PreviewProvider {
     static var previews: some View {
         MainVIew()
-    }
+            .environmentObject(AuthencationViewModel())
+   }
 }
 var totalPage = 3

@@ -40,8 +40,11 @@
 		228CBE1F2B581AF800EF5AC1 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228CBE1E2B581AF800EF5AC1 /* ProductModel.swift */; };
 		228CBE212B581B1900EF5AC1 /* AuthencationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228CBE202B581B1900EF5AC1 /* AuthencationViewModel.swift */; };
 		22B14C7C2B5FA681003C4040 /* BrandShowAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B14C7B2B5FA681003C4040 /* BrandShowAllView.swift */; };
+		22D3D82A2B6BA1FD007EA698 /* PopularProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3D8292B6BA1FD007EA698 /* PopularProductView.swift */; };
+		22D3D82C2B6BA37A007EA698 /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3D82B2B6BA37A007EA698 /* TypeView.swift */; };
 		22E5FCD62B68AAB600F526BC /* PizzaOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5FCD52B68AAB600F526BC /* PizzaOptionViewModel.swift */; };
 		22E5FCD82B68AAC600F526BC /* BurgerOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5FCD72B68AAC600F526BC /* BurgerOptionViewModel.swift */; };
+		22E9F2472B6CE98C00223551 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E9F2462B6CE98C00223551 /* TabsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,8 +75,11 @@
 		228CBE1E2B581AF800EF5AC1 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		228CBE202B581B1900EF5AC1 /* AuthencationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthencationViewModel.swift; sourceTree = "<group>"; };
 		22B14C7B2B5FA681003C4040 /* BrandShowAllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandShowAllView.swift; sourceTree = "<group>"; };
+		22D3D8292B6BA1FD007EA698 /* PopularProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularProductView.swift; sourceTree = "<group>"; };
+		22D3D82B2B6BA37A007EA698 /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
 		22E5FCD52B68AAB600F526BC /* PizzaOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaOptionViewModel.swift; sourceTree = "<group>"; };
 		22E5FCD72B68AAC600F526BC /* BurgerOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgerOptionViewModel.swift; sourceTree = "<group>"; };
+		22E9F2462B6CE98C00223551 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +156,6 @@
 				228CBE1E2B581AF800EF5AC1 /* ProductModel.swift */,
 				22670A362B5A7D4000CCA4A2 /* UserAddress.swift */,
 				22150D7C2B5E5C2900B85A74 /* BrandModel.swift */,
-				22B14C7B2B5FA681003C4040 /* BrandShowAllView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 		228CBE1A2B581AB300EF5AC1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				22B14C7B2B5FA681003C4040 /* BrandShowAllView.swift */,
 				226E77722B581DA40002BAC3 /* LoginView.swift */,
 				226E77782B582B010002BAC3 /* RegisterView.swift */,
 				225080BB2B595BB200D2D0F1 /* GetStartedView.swift */,
@@ -166,6 +172,9 @@
 				22670A322B5A7BBE00CCA4A2 /* AddressSetUpView.swift */,
 				225F60782B5BB84300084EBA /* HomeView.swift */,
 				225C7F942B5EC32C00AC2E8D /* DetailDishesView.swift */,
+				22D3D8292B6BA1FD007EA698 /* PopularProductView.swift */,
+				22D3D82B2B6BA37A007EA698 /* TypeView.swift */,
+				22E9F2462B6CE98C00223551 /* TabsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -287,12 +296,15 @@
 				228CBE1F2B581AF800EF5AC1 /* ProductModel.swift in Sources */,
 				22B14C7C2B5FA681003C4040 /* BrandShowAllView.swift in Sources */,
 				228CBDFA2B58158500EF5AC1 /* FoodAppApp.swift in Sources */,
+				22D3D82A2B6BA1FD007EA698 /* PopularProductView.swift in Sources */,
 				22150D782B5D73C800B85A74 /* ProductViewModel.swift in Sources */,
 				22E5FCD82B68AAC600F526BC /* BurgerOptionViewModel.swift in Sources */,
+				22D3D82C2B6BA37A007EA698 /* TypeView.swift in Sources */,
 				228CBE1D2B581AEA00EF5AC1 /* User.swift in Sources */,
 				226E77772B58295B0002BAC3 /* Extension.swift in Sources */,
 				225080BC2B595BB200D2D0F1 /* GetStartedView.swift in Sources */,
 				22150D7D2B5E5C2900B85A74 /* BrandModel.swift in Sources */,
+				22E9F2472B6CE98C00223551 /* TabsView.swift in Sources */,
 				22E5FCD62B68AAB600F526BC /* PizzaOptionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

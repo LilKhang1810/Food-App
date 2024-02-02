@@ -11,8 +11,13 @@ import FirebaseFirestore
 class AuthencationViewModel: ObservableObject{
     let auth = Auth.auth()
     @Published var signIn = false
+    @Published var userName: String = ""
+    private let uId = Auth.auth().currentUser?.uid
     var issignedIn: Bool{
         return auth.currentUser != nil
+    }
+    init(){
+        fetchUserNameForCurrentUser()
     }
     func signIn(email: String, password: String){
         auth.signIn(withEmail: email, password: password){[weak self]result,error in
@@ -55,6 +60,32 @@ class AuthencationViewModel: ObservableObject{
             }
             else{
                 print("Dữ liệu đã được lưu vào Firestore thành công.")
+            }
+        }
+    }
+    func fetchUserNameForCurrentUser() {
+        guard let currentUser = Auth.auth().currentUser else {
+            print("Không có người dùng đang đăng nhập.")
+            return
+        }
+        
+        let userID = currentUser.uid
+        let db = Firestore.firestore()
+        
+        // Thực hiện truy vấn để lấy thông tin người dùng từ Firestore
+        let userRef = db.collection("User").document(userID)
+        userRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                // Lấy thông tin người dùng từ tài liệu
+                if let userData = document.data(),
+                   let userName = userData["name"] as? String {
+                    // Cập nhật tên của người dùng
+                    self.userName = userName
+                } else {
+                    print("Không tìm thấy thông tin về tên của người dùng.")
+                }
+            } else {
+                print("Tài liệu người dùng không tồn tại trong Firestore.")
             }
         }
     }
