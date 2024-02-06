@@ -233,6 +233,18 @@ struct ProductFrameView: View {
                 Spacer()
             }
             .frame(width: 158, height: 230)
+            Button(action: {
+                print("Liked")
+            }, label: {
+                
+                Image(systemName: "heart")
+                    .foregroundColor(.black)
+                    .scaledToFit()
+                    .padding(5)
+                    .background(.ultraThinMaterial.opacity(0.8))
+                    .cornerRadius(10)
+            })
+            .padding(.leading,100)
         }
     }
 }

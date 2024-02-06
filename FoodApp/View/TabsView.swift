@@ -18,7 +18,7 @@ struct TabsView: View {
                         
                 }
                 .tag(1)
-            Text("SearchView")
+            SearchView()
                 .tabItem {
                     Image(selectedTab == 2 ? "searchSelected" : "search")
                 }

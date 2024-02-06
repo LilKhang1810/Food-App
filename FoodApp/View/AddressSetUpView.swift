@@ -14,6 +14,7 @@ struct AddressSetUpView: View {
         NavigationStack{
             Text("Address setup")
                 .font(Font.custom("Bebas Neue", size: 36))
+
                 .padding(.trailing,200)
             Spacer()
             VStack(alignment: .leading){
