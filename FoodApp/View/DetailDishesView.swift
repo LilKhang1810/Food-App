@@ -7,8 +7,10 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+
 struct DetailDishesView: View {
     @State var product: Product
+    @State var cart: Cart = Cart(id: "", name: "", img_url: "")
     @StateObject var productVM = ProductViewController()
     @State var showPizzaOptionScreen:Bool = false
     @State var showBurgerOptionScreen:Bool = false
@@ -17,12 +19,13 @@ struct DetailDishesView: View {
     @State var quantity: Int = 1
     @State var optionPrice: Int = 0
     var subTotal: Int {
-        return (product.price + optionPrice) * quantity
+        return (product.price + optionPrice) * product.quantity
     }
     let selectedType: String
     var filterType:[Product] {
         productVM.products.filter{$0.type == selectedType}
     }
+
     var body: some View {
         NavigationStack{
             ZStack{
@@ -101,22 +104,22 @@ struct DetailDishesView: View {
                                     .cornerRadius(20)
                                     .overlay{
                                         HStack{
-                                            Text("\(quantity)")
+                                            Text("\(product.quantity)")
                                             Spacer()
                                             Button(
                                                 action: {
-                                                    if quantity == 1{
-                                                        quantity = 1
+                                                    if product.quantity == 1{
+                                                        product.quantity = 1
                                                     }
                                                     else{
-                                                        quantity -= 1
+                                                        product.quantity -= 1
                                                     }
                                                 }) {
                                                     Image(systemName: "minus")
                                                 }
                                                 .padding(.trailing,10)
                                             
-                                            Button(action: {quantity+=1}) {
+                                            Button(action: {product.quantity+=1}) {
                                                 Image(systemName: "plus")
                                             }
                                         }
@@ -134,7 +137,11 @@ struct DetailDishesView: View {
                         }
                         .padding(.horizontal,20)
                         Button(
-                            action: {print("\(optionPrice)")},
+                            action: {
+                                Task{
+                                    await productVM.addToCart(item:product,optionPrice:optionPrice,quantity: product.quantity)
+                                }
+                            },
                             label: {
                                 Rectangle()
                                     .foregroundColor(Color("AccentColor"))
@@ -170,6 +177,7 @@ struct DetailDishesView: View {
             }
         }
     }
+    
 }
 
 struct DetailDishesView_Previews: PreviewProvider {

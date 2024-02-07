@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-struct Product : Hashable {
+struct Product : Codable,Hashable{
     var id: String
     var name: String
     var price: Int
@@ -15,6 +15,7 @@ struct Product : Hashable {
     var brand: String
     var popular: Bool
     var type: String
+    var quantity : Int = 1
 }
 struct Option: Hashable {
     var id: String
