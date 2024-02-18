@@ -23,7 +23,7 @@ struct TabsView: View {
                     Image(selectedTab == 2 ? "searchSelected" : "search")
                 }
                 .tag(2)
-            Text("CartView")
+            CartView()
                 .tabItem {
                     Image(selectedTab == 3 ?"cartSelected":"cart")
                 }

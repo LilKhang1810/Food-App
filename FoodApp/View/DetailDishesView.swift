@@ -153,6 +153,9 @@ struct DetailDishesView: View {
                                             .foregroundColor(.white)
                                     }
                             })
+                        .alert(isPresented: $productVM.showingAlert) {
+                            Alert(title: Text(productVM.titleAlert),message: Text(productVM.messageAlert),dismissButton: .default(Text("OK")))
+                        }
                     }
                 }
                 if showPizzaOptionScreen == true{

@@ -81,7 +81,7 @@ struct HomeView: View {
                     HStack(spacing:30){
                         ForEach(productVM.products,id:\.self){item in
                             NavigationLink(destination: DetailDishesView(product: Product(id: item.id, name: item.name, price: item.price, img_url: item.img_url, brand: item.brand, popular: item.popular, type: item.type), selectedType: item.type)) {
-                                ProductFrameView(img_url: item.img_url, name: item.name, price: item.price)
+                                ProductFrameView(img_url: item.img_url, name: item.name, price: item.price, product:Product(id: item.id, name: item.name, price: item.price, img_url: item.img_url, brand: item.brand, popular: item.popular, type: item.type))
                             }
                         }
                     }
@@ -135,7 +135,7 @@ struct HomeView: View {
                         LazyVGrid(columns: Array(repeating: GridItem(), count: 2),spacing: 20){
                             ForEach(popularDishes.prefix(4),id:\.self) { item in
                                 NavigationLink(destination: DetailDishesView(product: Product(id: item.id, name: item.name, price: item.price, img_url: item.img_url, brand: item.brand, popular: item.popular, type: item.type), selectedType: item.type)) {
-                                    ProductFrameView(img_url: item.img_url, name: item.name, price: item.price)
+                                    ProductFrameView(img_url: item.img_url, name: item.name, price: item.price, product: Product(id: item.id, name: item.name, price: item.price, img_url: item.img_url, brand: item.brand, popular: item.popular, type: item.type))
                                 }
                             }
                         }
@@ -196,9 +196,11 @@ struct FrameTypeFood: View {
 }
 
 struct ProductFrameView: View {
+    @StateObject var productVM = ProductViewController()
     let img_url: String
     let name: String
     let price: Int
+    @State var product: Product
     var body: some View {
         ZStack{
             Rectangle()
@@ -234,7 +236,9 @@ struct ProductFrameView: View {
             }
             .frame(width: 158, height: 230)
             Button(action: {
-                print("Liked")
+                Task{
+                    await productVM.addToFav(item: product)
+                }
             }, label: {
                 
                 Image(systemName: "heart")
@@ -245,6 +249,9 @@ struct ProductFrameView: View {
                     .cornerRadius(10)
             })
             .padding(.leading,100)
+            .alert(isPresented: $productVM.showingAlert) {
+                Alert(title: Text(productVM.titleAlert),message: Text(productVM.messageAlert),dismissButton: .default(Text("OK")))
+            }
         }
     }
 }

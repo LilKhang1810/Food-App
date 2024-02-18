@@ -12,6 +12,9 @@ class CartViewController: ObservableObject{
     @Published var foods:[Product] = []
     private let db = Firestore.firestore()
     private let uId = Auth.auth().currentUser?.uid
+    @Published var showingAlert: Bool = false
+    @Published var messageAlert = ""
+    @Published var titleAlert = ""
     init(){
         fetchFood()
     }
@@ -39,5 +42,26 @@ class CartViewController: ObservableObject{
                 }
             }
         }
+    }
+    func deleteItem(id: String) async{
+        guard let uId else{
+            return
+        }
+        let cartItem = db.collection("User")
+            .document(uId)
+            .collection("Cart")
+        do{
+            let cartRef = cartItem.document(id)
+            try await cartRef.delete()
+            showAlert(title: "Delete", message: "Are you sure?")
+        }
+        catch{
+            print("Error \(error)")
+        }
+    }
+    func showAlert(title: String, message: String){
+        titleAlert = title
+        messageAlert = message
+        showingAlert = true
     }
 }

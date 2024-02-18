@@ -7,9 +7,9 @@ class ProductViewController:ObservableObject{
     @Published var products: [Product] = []
     private let db = Firestore.firestore()
     private let uId = Auth.auth().currentUser?.uid
-    @State var showingAlert: Bool = false
-    @State var messageAlert = ""
-    @State var titleAlert = ""
+    @Published var showingAlert: Bool = false
+    @Published var messageAlert = ""
+    @Published var titleAlert = ""
     init(){
         print("Init ProductViewController")
         fetchProduct()
@@ -57,14 +57,14 @@ class ProductViewController:ObservableObject{
                 
                 let quantity = existingItem.data()["quantity"] as? Int ?? item.quantity
                 try await existingItem.reference.updateData(["quantity": quantity+1])
-                //                showAlert(title: "Added to bag", message: "Your shoe is added to bag successfully")
+                showAlert(title: "Added to bag", message: "Your dish is added to bag successfully")
                 
                 
             }
             else{
                 let documentRef = cartItem.document(newId)
                 try await documentRef.setData(cartProduct.asDictionary())
-                //                showAlert(title: "Added to bag", message: "Your shoe is added to bag successfully")
+                showAlert(title: "Added to bag", message: "Your dish is added to bag successfully")
             }
         }
         catch {

@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 struct CartView: View {
     @StateObject var vm = CartViewController()
     @State var quantitySelected: Int = 1
+    @State var showAlert: Bool = false
     var body: some View {
         NavigationStack{
             ScrollView{
@@ -18,6 +19,7 @@ struct CartView: View {
                         .font(Font.custom("Bebas Neue", size: 35))
                         .padding(.trailing,250)
                         .padding(.top,30)
+                    
                     ForEach(vm.foods, id: \.self) { item in
                         NavigationLink(destination: DetailDishesView(product: Product(id: item.id, name: item.name, price: item.price, img_url: item.img_url, brand: item.brand, popular: item.popular, type: item.type), selectedType: item.type)) {
                             HStack {
@@ -33,13 +35,20 @@ struct CartView: View {
                                             .multilineTextAlignment(.leading)
                                         Spacer()
                                         Button(
-                                            action: {},
+                                            action: {
+                                                Task{
+                                                    await vm.deleteItem(id: item.id)
+                                                }
+                                            },
                                             label: {
                                                 Image("trashIcon")
                                             })
+                                        .alert(isPresented: $vm.showingAlert) {
+                                            Alert(title: Text(vm.titleAlert),message: Text(vm.messageAlert), primaryButton: .default(Text("OK")), secondaryButton: .destructive(Text("Cancel")))
+                                        }
                                     }
                                     HStack{
-                                        Text("\(item.price)đ")
+                                        Text("\(item.price*item.quantity)đ")
                                             .font(Font.custom("Bebas Neue", size: 25))
                                         Spacer()
                                         HStack{
@@ -49,6 +58,7 @@ struct CartView: View {
                                     }
                                 }
                             }
+                            
                         }
                     }
                 }
@@ -57,7 +67,7 @@ struct CartView: View {
             VStack(alignment: .leading){
                 Text("Total")
                     .font(Font.custom("Bebas Neue", size: 20))
-                Text(String(vm.foods.reduce(0){$0 + (Int($1.price))})+" đ")
+                Text(String(vm.foods.reduce(0){$0 + (Int($1.price*$1.quantity))})+" đ")
                     .font(Font.custom("Bebas Neue", size: 35))
                     .foregroundColor(.orange)
             }

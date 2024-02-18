@@ -36,7 +36,7 @@ struct SearchView: View {
                         LazyVGrid(columns: Array(repeating: GridItem(), count: 2),spacing: 20){
                             ForEach(vm.products.filter({$0.name.lowercased().contains(self.txt.lowercased())}), id: \.self) { product in
                                 NavigationLink(destination: DetailDishesView(product: Product(id: product.id, name: product.name, price: product.price, img_url: product.img_url, brand: product.brand, popular: product.popular, type: product.type), selectedType: product.type)) {
-                                    ProductFrameView(img_url: product.img_url, name: product.name, price: product.price)
+                                    ProductFrameView(img_url: product.img_url, name: product.name, price: product.price, product: Product(id: product.id, name: product.name, price: product.price, img_url: product.img_url, brand: product.brand, popular: product.popular, type: product.type))
                                 }
                             }
                         }

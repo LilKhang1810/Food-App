@@ -46,6 +46,7 @@
 		22B14C7C2B5FA681003C4040 /* BrandShowAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B14C7B2B5FA681003C4040 /* BrandShowAllView.swift */; };
 		22D3D82A2B6BA1FD007EA698 /* PopularProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3D8292B6BA1FD007EA698 /* PopularProductView.swift */; };
 		22D3D82C2B6BA37A007EA698 /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3D82B2B6BA37A007EA698 /* TypeView.swift */; };
+		22DCF77C2B81C4B000C46B41 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DCF77B2B81C4B000C46B41 /* FavoriteViewController.swift */; };
 		22E5FCD62B68AAB600F526BC /* PizzaOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5FCD52B68AAB600F526BC /* PizzaOptionViewModel.swift */; };
 		22E5FCD82B68AAC600F526BC /* BurgerOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5FCD72B68AAC600F526BC /* BurgerOptionViewModel.swift */; };
 		22E9F2472B6CE98C00223551 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E9F2462B6CE98C00223551 /* TabsView.swift */; };
@@ -85,6 +86,7 @@
 		22B14C7B2B5FA681003C4040 /* BrandShowAllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandShowAllView.swift; sourceTree = "<group>"; };
 		22D3D8292B6BA1FD007EA698 /* PopularProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularProductView.swift; sourceTree = "<group>"; };
 		22D3D82B2B6BA37A007EA698 /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
+		22DCF77B2B81C4B000C46B41 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		22E5FCD52B68AAB600F526BC /* PizzaOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaOptionViewModel.swift; sourceTree = "<group>"; };
 		22E5FCD72B68AAC600F526BC /* BurgerOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgerOptionViewModel.swift; sourceTree = "<group>"; };
 		22E9F2462B6CE98C00223551 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				22E5FCD52B68AAB600F526BC /* PizzaOptionViewModel.swift */,
 				22E5FCD72B68AAC600F526BC /* BurgerOptionViewModel.swift */,
 				2299EA812B78AB3A005D4741 /* CartViewController.swift */,
+				22DCF77B2B81C4B000C46B41 /* FavoriteViewController.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				228CBDFA2B58158500EF5AC1 /* FoodAppApp.swift in Sources */,
 				22D3D82A2B6BA1FD007EA698 /* PopularProductView.swift in Sources */,
 				22150D782B5D73C800B85A74 /* ProductViewModel.swift in Sources */,
+				22DCF77C2B81C4B000C46B41 /* FavoriteViewController.swift in Sources */,
 				22E5FCD82B68AAC600F526BC /* BurgerOptionViewModel.swift in Sources */,
 				22D3D82C2B6BA37A007EA698 /* TypeView.swift in Sources */,
 				228CBE1D2B581AEA00EF5AC1 /* User.swift in Sources */,
