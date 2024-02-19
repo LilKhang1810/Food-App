@@ -28,7 +28,7 @@ struct TabsView: View {
                     Image(selectedTab == 3 ?"cartSelected":"cart")
                 }
                 .tag(3)
-            Text("FavoriteView")
+           FavoriteView()
                 .tabItem {
                     Image(selectedTab == 4 ? "favoriteSelected": "favorite")
                 }

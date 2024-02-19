@@ -52,8 +52,9 @@ class CartViewController: ObservableObject{
             .collection("Cart")
         do{
             let cartRef = cartItem.document(id)
+
             try await cartRef.delete()
-            showAlert(title: "Delete", message: "Are you sure?")
+            
         }
         catch{
             print("Error \(error)")

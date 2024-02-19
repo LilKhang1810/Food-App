@@ -1,25 +1,24 @@
 //
-//  CartView.swift
+//  FavoriteView.swift
 //  FoodApp
 //
-//  Created by Nguyễn Khang Hữu on 07/02/2024.
+//  Created by Nguyễn Khang Hữu on 19/02/2024.
 //
 
 import SwiftUI
 import SDWebImageSwiftUI
-struct CartView: View {
-    @StateObject var vm:CartViewController = CartViewController()
-    @State var quantitySelected: Int = 1
+struct FavoriteView: View {
+    @StateObject var favVm: FavoriteViewController = FavoriteViewController()
     var body: some View {
         NavigationStack{
             ScrollView{
-                VStack(alignment: .leading){
-                    Text("Basket")
+                VStack{
+                    Text("Liked")
                         .font(Font.custom("Bebas Neue", size: 35))
                         .padding(.trailing,250)
                         .padding(.top,30)
                     
-                    ForEach(vm.foods, id: \.self) { item in
+                    ForEach(favVm.foods, id: \.self) { item in
                         NavigationLink(destination: DetailDishesView(product: Product(id: item.id, name: item.name, price: item.price, img_url: item.img_url, brand: item.brand, popular: item.popular, type: item.type), selectedType: item.type)) {
                             HStack {
                                 AnimatedImage(url: URL(string: item.img_url))
@@ -35,16 +34,15 @@ struct CartView: View {
                                         Spacer()
                                         Button(
                                             action: {
-                                                vm.showingAlert = true
+                                                favVm.showingAlert = true
                                             },
                                             label: {
                                                 Image("trashIcon")
                                             })
-                                        .alert(isPresented: $vm.showingAlert) {
-                                            Alert(title: Text("Are you sure?"),message: Text("You can choose again in detail"), primaryButton: .default(Text("OK")){
+                                        .alert(isPresented: $favVm.showingAlert) {
+                                            Alert(title: Text("Are you sure?"),message: Text("You can like it again in home"), primaryButton: .default(Text("OK")){
                                                 Task{
-                                                    await vm.deleteItem(id: item.id)
-                                                    
+                                                    await favVm.deleteItem(id: item.id)
                                                 }
                                             }, secondaryButton: .destructive(Text("Cancel")))
                                         }
@@ -60,38 +58,17 @@ struct CartView: View {
                                     }
                                 }
                             }
-                            
+                            .padding()
                         }
                     }
                 }
-                .padding()
             }
-            VStack(alignment: .leading){
-                Text("Total")
-                    .font(Font.custom("Bebas Neue", size: 20))
-                Text(String(vm.foods.reduce(0){$0 + (Int($1.price*$1.quantity))})+" đ")
-                    .font(Font.custom("Bebas Neue", size: 35))
-                    .foregroundColor(.orange)
-            }
-            .padding(.trailing,220)
-            .padding(.leading,30)
-            Button(
-                action: {},
-                label: {
-                    Text("Proceed to checkout")
-                        .font(Font.custom("Bebas Neue", size: 20))
-                        .foregroundColor(.white)
-                        .frame(width: 350,height: 50)
-                        .background(Color("AccentColor"))
-                        .cornerRadius(20)
-                })
-            Spacer()
         }
     }
 }
 
-struct CartView_Previews: PreviewProvider {
+struct FavoriteView_Previews: PreviewProvider {
     static var previews: some View {
-        CartView()
+        FavoriteView()
     }
 }
