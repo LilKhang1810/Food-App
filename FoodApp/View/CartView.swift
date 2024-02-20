@@ -75,16 +75,14 @@ struct CartView: View {
             }
             .padding(.trailing,220)
             .padding(.leading,30)
-            Button(
-                action: {},
-                label: {
-                    Text("Proceed to checkout")
-                        .font(Font.custom("Bebas Neue", size: 20))
-                        .foregroundColor(.white)
-                        .frame(width: 350,height: 50)
-                        .background(Color("AccentColor"))
-                        .cornerRadius(20)
-                })
+            NavigationLink(destination: CheckOutView(totalCash: vm.foods.reduce(0){$0 + (Int($1.price*$1.quantity))})) {
+                Text("Proceed to checkout")
+                    .font(Font.custom("Bebas Neue", size: 20))
+                    .foregroundColor(.white)
+                    .frame(width: 350,height: 50)
+                    .background(Color("AccentColor"))
+                    .cornerRadius(20)
+            }
             Spacer()
         }
     }

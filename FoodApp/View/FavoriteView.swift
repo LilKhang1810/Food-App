@@ -51,9 +51,7 @@ struct FavoriteView: View {
                                         Text("\(item.price*item.quantity)đ")
                                             .font(Font.custom("Bebas Neue", size: 25))
                                         Spacer()
-                                        HStack{
-                                            Text("Qty: \(item.quantity)")
-                                        }
+                                        
                                         .foregroundColor(.black)
                                     }
                                 }

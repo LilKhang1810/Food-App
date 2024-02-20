@@ -14,7 +14,7 @@ struct MainVIew: View {
     var body: some View {
         NavigationView{
             if mainVm.isSignIn,!mainVm.currentUserId.isEmpty{
-                ContentView()
+                TabsView()
             }
             else{
                 if pageOnboard > totalPage {
