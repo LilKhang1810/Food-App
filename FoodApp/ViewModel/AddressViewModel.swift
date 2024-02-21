@@ -11,7 +11,7 @@ import Firebase
 class AddressViewModel: ObservableObject{
     @Published var address = ""
     @Published var zipCode = ""
-    @Published var city = ""
+    @Published var district = ""
     private let db = Firestore.firestore()
     private let uId = Auth.auth().currentUser?.uid
     func setUpAddress(){
@@ -23,7 +23,7 @@ class AddressViewModel: ObservableObject{
         let newAddress = Address(id: newId,
                                  address: address,
                                  zipCode: zipCode,
-                                 city: city)
+                                 district: district)
         db.collection("User")
             .document(uId)
             .collection("Address")

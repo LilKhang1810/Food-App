@@ -9,12 +9,13 @@ import SwiftUI
 
 struct AddressSetUpView: View {
     @StateObject var addressVm = AddressViewModel()
-    
+    let suggestedDistricts = ["District 1", "District 2", "District 3", "District 4", "District 5", "District 6", "District 7", "District 8", "District 9", "District 10", "District 11", "District 12", "Binh Tan District", "Binh Thanh District", "Go Vap District", "Phu Nhuan District", "Tan Binh District", "Tan Phu District", "Thu Duc District", "Nha Be District", "Hoc Mon District", "Cu Chi District", "Can Gio District","Binh Chanh District"]
+    @State private var showSuggestions: Bool = true
     var body: some View {
         NavigationStack{
             Text("Address setup")
                 .font(Font.custom("Bebas Neue", size: 36))
-
+            
                 .padding(.trailing,200)
             Spacer()
             VStack(alignment: .leading){
@@ -35,13 +36,33 @@ struct AddressSetUpView: View {
                     .autocapitalization(.none)
             }
             .padding()
-            VStack(alignment:.leading){
-                Text("City")
+            VStack(alignment: .leading) {
+                Text("District")
                     .font(Font.custom("Bebas Neue", size: 15))
                     .foregroundColor(Color(red: 0.18, green: 0.86, blue: 0.74))
-                    .padding(.leading,20)
-                TextField("Password", text: $addressVm.city).textFieldStyle(OvalTextFieldStyle()).disableAutocorrection(true)
+                    .padding(.leading, 20)
+                
+                TextField("District", text: $addressVm.district)
+                    .textFieldStyle(OvalTextFieldStyle())
+                    .disableAutocorrection(true)
                     .autocapitalization(.none)
+                
+                if !addressVm.district.isEmpty {
+                    ScrollView(showsIndicators: false) {
+                        ForEach(suggestedDistricts.filter { $0.hasPrefix(addressVm.district) }, id: \.self) { suggestion in
+                            Button(action: {
+                                self.addressVm.district = suggestion
+                                self.showSuggestions = false
+                            }) {
+                                Text(suggestion)
+                                    .padding()
+                            }
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .frame(height: showSuggestions ? 100 : 0)
+                    .animation(.easeInOut) // Add animation for smoother transition
+                }
             }
             .padding()
             VStack{
@@ -55,18 +76,6 @@ struct AddressSetUpView: View {
                         .foregroundColor(.white)
                         .background(Color(red: 0.18, green: 0.86, blue: 0.74))
                         .cornerRadius(30)
-                })
-                Button(action: {
-                    
-                },
-                       label: {
-                    // Body
-                    Text("Skip for now")
-                        .font(
-                            Font.custom("Poppins", size: 17)
-                                .weight(.medium)
-                        )
-                        .foregroundColor(Color(red: 0.64, green: 0.64, blue: 0.64))
                 })
             }
             .padding(.top,50)

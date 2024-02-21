@@ -19,12 +19,28 @@ struct SearchView: View {
                         .font(Font.custom("Bebas Neue", size: 15))
                         .foregroundColor(Color("AccentColor"))
                         .padding(.horizontal,25)
-                    TextField("Search", text: $txt)
-                        .font(Font.custom("Bebas Neue", size: 18))
-                        .padding(.horizontal)
-                        .frame(height: 50)
-                        .background(.gray.opacity(0.3))
-                        .cornerRadius(25)
+                    ZStack{
+                        TextField("Search", text: $txt)
+                            .font(Font.custom("Bebas Neue", size: 18))
+                            .padding(.horizontal)
+                            .frame(height: 50)
+                            .background(.gray.opacity(0.3))
+                            .cornerRadius(25)
+                        Button(
+                            action: {
+                                if !txt.isEmpty{
+                                    txt.removeLast()
+                                }
+                            },
+                            label: {
+                                Image("delBtn")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 20)
+                            }
+                        )
+                        .offset(x:150)
+                    }
                 }
                 .padding(.horizontal,15)
                 .padding(.bottom,15)

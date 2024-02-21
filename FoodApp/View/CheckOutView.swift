@@ -32,14 +32,11 @@ struct CheckOutView: View {
                     Text("Home")
                         .font(Font.custom("Gill Sans", size: 20))
                     Spacer()
-                    Button(
-                        action: {},
-                        label: {
-                            Text("Change")
-                                .font(Font.custom("Gill Sans", size: 20))
-                                .foregroundColor(.orange)
-                        }
-                    )
+                    NavigationLink(destination: AddressSetUpView()) {
+                        Text("Change")
+                            .font(Font.custom("Gill Sans", size: 20))
+                            .foregroundColor(.orange)
+                    }
                 }
                 
                 .padding(.horizontal,15)
@@ -51,14 +48,11 @@ struct CheckOutView: View {
                     Text("XXXX XXXX XXXX 2538")
                         .font(Font.custom("Gill Sans", size: 20))
                     Spacer()
-                    Button(
-                        action: {},
-                        label: {
-                            Text("Change")
-                                .font(Font.custom("Gill Sans", size: 20))
-                                .foregroundColor(.orange)
-                        }
-                    )
+                    NavigationLink(destination: Text("Change payment method")) {
+                        Text("Change")
+                            .font(Font.custom("Gill Sans", size: 20))
+                            .foregroundColor(.orange)
+                    }
                 }
                 .padding(.horizontal,15)
                 NavigationLink(destination: OrderConfirmView()) {

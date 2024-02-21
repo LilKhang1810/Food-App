@@ -10,5 +10,5 @@ struct Address: Codable{
     var id: String
     var address: String
     var zipCode: String
-    var city: String
+    var district: String
 }
