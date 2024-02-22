@@ -67,7 +67,13 @@ struct AddressSetUpView: View {
             .padding()
             VStack{
                 Button(action: {
-                    addressVm.setUpAddress()
+                    addressVm.getAddressDocumentId { documentId in
+                        if let documentId = documentId {
+                            addressVm.updateAddress(addressId: documentId)
+                        } else {
+                            print("Không tìm thấy documentId")
+                        }
+                    }
                 },
                        label: {
                     Text("Add address")
