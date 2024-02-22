@@ -6,8 +6,9 @@
 //
 
 import Foundation
-struct Address: Codable{
+struct Address: Codable, Hashable{
     var id: String
+    var addressType: String
     var address: String
     var zipCode: String
     var district: String

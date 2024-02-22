@@ -12,14 +12,44 @@ class AddressViewModel: ObservableObject{
     @Published var address = ""
     @Published var zipCode = ""
     @Published var district = ""
+    @Published var addressType = ""
     private let db = Firestore.firestore()
     private let uId = Auth.auth().currentUser?.uid
+    @Published var addresses:[Address] = []
     @Published var newId = UUID().uuidString
+    init(){
+        fetchAddressData()
+    }
+    func fetchAddressData(){
+        guard let uId else{
+            return
+        }
+        db.collection("User")
+            .document(uId)
+            .collection("Address")
+            .addSnapshotListener { snapshot, error in
+                guard error == nil else{
+                    return
+                }
+                if let snapshot = snapshot{
+                    self.addresses = snapshot.documents.compactMap({ document in
+                        let data = document.data()
+                        let id = document.documentID
+                        let address = data["address"] as? String ?? ""
+                        let addressType = data["addressType"] as? String ?? ""
+                        let zipcode = data["zipcode"] as? String ?? ""
+                        let district = data["district"]as? String ?? ""
+                        return Address(id: id, addressType: addressType, address: address, zipCode: zipcode, district: district)
+                    })
+                }
+            }
+    }
     func setUpAddress(){
         guard let uId else{
             return
         }
         let newAddress = Address(id: newId,
+                                 addressType: addressType,
                                  address: address,
                                  zipCode: zipCode,
                                  district: district)
@@ -35,6 +65,7 @@ class AddressViewModel: ObservableObject{
         }
         
         let updateData: [String: Any] = [
+            "addressType": addressType,
             "address": address,
             "zipCode": zipCode,
             "district": district
@@ -70,6 +101,7 @@ class AddressViewModel: ObservableObject{
                 // Giả sử bạn chỉ quan tâm đến một tài liệu, nếu có
                 if let document = documents.first {
                     completion(document.documentID)
+                
                 } else {
                     completion(nil)
                 }

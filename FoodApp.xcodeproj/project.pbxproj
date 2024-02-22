@@ -52,6 +52,7 @@
 		22E5FCD62B68AAB600F526BC /* PizzaOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5FCD52B68AAB600F526BC /* PizzaOptionViewModel.swift */; };
 		22E5FCD82B68AAC600F526BC /* BurgerOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5FCD72B68AAC600F526BC /* BurgerOptionViewModel.swift */; };
 		22E9F2472B6CE98C00223551 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E9F2462B6CE98C00223551 /* TabsView.swift */; };
+		22FA57162B87856500EA4E96 /* ManageAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA57152B87856500EA4E96 /* ManageAddressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		22E5FCD52B68AAB600F526BC /* PizzaOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaOptionViewModel.swift; sourceTree = "<group>"; };
 		22E5FCD72B68AAC600F526BC /* BurgerOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgerOptionViewModel.swift; sourceTree = "<group>"; };
 		22E9F2462B6CE98C00223551 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
+		22FA57152B87856500EA4E96 /* ManageAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAddressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 				221824162B73C4CC0011ACBE /* CartView.swift */,
 				221AF1342B83381100E05D48 /* FavoriteView.swift */,
 				2296284F2B843C7800988D34 /* CheckOutView.swift */,
+				22FA57152B87856500EA4E96 /* ManageAddressView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				22670A332B5A7BBE00CCA4A2 /* AddressSetUpView.swift in Sources */,
 				228CBE212B581B1900EF5AC1 /* AuthencationViewModel.swift in Sources */,
 				225F60792B5BB84300084EBA /* HomeView.swift in Sources */,
+				22FA57162B87856500EA4E96 /* ManageAddressView.swift in Sources */,
 				228CBDFC2B58158500EF5AC1 /* ContentView.swift in Sources */,
 				226E77752B5829300002BAC3 /* RegisterController.swift in Sources */,
 				22670A392B5A866100CCA4A2 /* MainViewController.swift in Sources */,
