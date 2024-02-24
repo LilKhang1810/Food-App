@@ -11,6 +11,7 @@ struct AddressSetUpView: View {
     @StateObject var addressVm = AddressViewModel()
     let suggestedDistricts = ["District 1", "District 2", "District 3", "District 4", "District 5", "District 6", "District 7", "District 8", "District 9", "District 10", "District 11", "District 12", "Binh Tan District", "Binh Thanh District", "Go Vap District", "Phu Nhuan District", "Tan Binh District", "Tan Phu District", "Thu Duc District", "Nha Be District", "Hoc Mon District", "Cu Chi District", "Can Gio District","Binh Chanh District"]
     @State private var showSuggestions: Bool = true
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         NavigationStack{
             Text("Address setup")
@@ -76,14 +77,8 @@ struct AddressSetUpView: View {
             .padding()
             VStack{
                 Button(action: {
-//                    addressVm.getAddressDocumentId { documentId in
-//                        if let documentId = documentId {
-//                            addressVm.updateAddress(addressId: documentId)
-//                        } else {
-//                            print("Không tìm thấy documentId")
-//                        }
-//                    }
                     addressVm.setUpAddress()
+                    dismiss()
                 },
                        label: {
                     Text("Add address")
@@ -108,6 +103,8 @@ struct AddressUpdateView: View {
     @StateObject var addressVm = AddressViewModel()
     let suggestedDistricts = ["District 1", "District 2", "District 3", "District 4", "District 5", "District 6", "District 7", "District 8", "District 9", "District 10", "District 11", "District 12", "Binh Tan District", "Binh Thanh District", "Go Vap District", "Phu Nhuan District", "Tan Binh District", "Tan Phu District", "Thu Duc District", "Nha Be District", "Hoc Mon District", "Cu Chi District", "Can Gio District","Binh Chanh District"]
     @State private var showSuggestions: Bool = true
+    @Environment(\.dismiss) var dismiss
+    @State var userAddress: Address
     var body: some View {
         NavigationStack{
             Text("Address setup")
@@ -120,7 +117,7 @@ struct AddressUpdateView: View {
                     .font(Font.custom("Bebas Neue", size: 15))
                     .foregroundColor(Color(red: 0.18, green: 0.86, blue: 0.74))
                     .padding(.leading,20)
-                TextField("Address", text: $addressVm.address).textFieldStyle(OvalTextFieldStyle()).disableAutocorrection(true)
+                TextField(userAddress.address, text: $addressVm.address).textFieldStyle(OvalTextFieldStyle()).disableAutocorrection(true)
                     .autocapitalization(.none)
             }
             .padding()
@@ -129,7 +126,7 @@ struct AddressUpdateView: View {
                     .font(Font.custom("Bebas Neue", size: 15))
                     .foregroundColor(Color(red: 0.18, green: 0.86, blue: 0.74))
                     .padding(.leading,20)
-                TextField("Home", text: $addressVm.addressType).textFieldStyle(OvalTextFieldStyle()).disableAutocorrection(true)
+                TextField(userAddress.addressType, text: $addressVm.addressType).textFieldStyle(OvalTextFieldStyle()).disableAutocorrection(true)
                     .autocapitalization(.none)
             }
             .padding()
@@ -138,7 +135,7 @@ struct AddressUpdateView: View {
                     .font(Font.custom("Bebas Neue", size: 15))
                     .foregroundColor(Color(red: 0.18, green: 0.86, blue: 0.74))
                     .padding(.leading,20)
-                TextField("Zipcode", text: $addressVm.zipCode).textFieldStyle(OvalTextFieldStyle()).disableAutocorrection(true)
+                TextField(userAddress.zipCode, text: $addressVm.zipCode).textFieldStyle(OvalTextFieldStyle()).disableAutocorrection(true)
                     .autocapitalization(.none)
             }
             .padding()
@@ -148,7 +145,7 @@ struct AddressUpdateView: View {
                     .foregroundColor(Color(red: 0.18, green: 0.86, blue: 0.74))
                     .padding(.leading, 20)
                 
-                TextField("District", text: $addressVm.district)
+                TextField(userAddress.district, text: $addressVm.district)
                     .textFieldStyle(OvalTextFieldStyle())
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
@@ -188,10 +185,27 @@ struct AddressUpdateView: View {
                         .foregroundColor(.white)
                         .background(Color(red: 0.18, green: 0.86, blue: 0.74))
                         .cornerRadius(30)
+                    
                 })
             }
             .padding(.top,50)
             .padding(.bottom,50)
+            Button(
+                action: {
+                    addressVm.getAddressDocumentId { documentId in
+                        if let documentId = documentId{
+                            addressVm.deleteAddress(id: documentId)
+                            dismiss()
+                        }else{
+                            print("Not found document to delete")
+                        }
+                    }
+                },
+                label: {
+                    Text("Delete Address")
+                        .font(Font.custom("Bebas Neue", size: 15))
+                        .foregroundColor(.red)
+                })
         }
     }
 }

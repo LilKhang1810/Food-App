@@ -12,4 +12,5 @@ struct Address: Codable, Hashable{
     var address: String
     var zipCode: String
     var district: String
+    var isPrimary: Bool = false
 }

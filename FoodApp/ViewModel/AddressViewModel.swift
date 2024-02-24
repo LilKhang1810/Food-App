@@ -19,6 +19,7 @@ class AddressViewModel: ObservableObject{
     @Published var newId = UUID().uuidString
     init(){
         fetchAddressData()
+    
     }
     func fetchAddressData(){
         guard let uId else{
@@ -37,9 +38,9 @@ class AddressViewModel: ObservableObject{
                         let id = document.documentID
                         let address = data["address"] as? String ?? ""
                         let addressType = data["addressType"] as? String ?? ""
-                        let zipcode = data["zipcode"] as? String ?? ""
+                        let zipCode = data["zipCode"] as? String ?? ""
                         let district = data["district"]as? String ?? ""
-                        return Address(id: id, addressType: addressType, address: address, zipCode: zipcode, district: district)
+                        return Address(id: id, addressType: addressType, address: address, zipCode: zipCode, district: district)
                     })
                 }
             }
@@ -83,6 +84,16 @@ class AddressViewModel: ObservableObject{
                 }
             }
     }
+    func deleteAddress(id:String){
+        guard let uId else{
+            return
+        }
+        db.collection("User")
+            .document(uId)
+            .collection("Address")
+            .document(id)
+            .delete()
+    }
     func getAddressDocumentId(completion: @escaping (String?) -> Void) {
         guard let uId = uId else {
             completion(nil)
@@ -107,5 +118,9 @@ class AddressViewModel: ObservableObject{
                 }
             }
     }
-
+    func AddressChoose(addressId: String){
+        if let index = addresses.firstIndex(where: {$0.id == addressId}){
+            addresses[index].isPrimary = true
+        }
+    }
 }

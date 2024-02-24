@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ManageAddressView: View {
     @StateObject var addressVM = AddressViewModel()
+    @State var selectedAddress: String = ""
+
     var body: some View {
         NavigationStack{
             ScrollView{
@@ -24,8 +26,12 @@ struct ManageAddressView: View {
                                     Text(data.addressType)
                                         .font(Font.custom("Bebas Neue", size: 15))
                                         .foregroundColor(.orange)
+                                    
+                                        Image(systemName: selectedAddress == data.id ? "checkmark" : "")
+                                        
+                                    
                                     Spacer()
-                                    NavigationLink(destination: AddressUpdateView()) {
+                                    NavigationLink(destination: AddressUpdateView(userAddress: Address(id: data.id, addressType: data.addressType, address: data.address, zipCode: data.zipCode, district: data.district))) {
                                         Text("Change")
                                             .font(Font.custom("Bebas Neue", size: 15))
                                     }
@@ -35,6 +41,12 @@ struct ManageAddressView: View {
                                 
                             }
                             .padding(.vertical,20)
+                            .onTapGesture {
+                                addressVM.AddressChoose(addressId: data.id)
+                                selectedAddress = data.id
+                                print("You choose \(data)")
+                                
+                            }
                         }
                         
                     }
@@ -50,6 +62,7 @@ struct ManageAddressView: View {
                             .cornerRadius(25)
                     }
                     .padding(.top,150)
+                    
                 }
             }
         }
