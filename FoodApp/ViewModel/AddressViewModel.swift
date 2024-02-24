@@ -94,7 +94,7 @@ class AddressViewModel: ObservableObject{
             .document(id)
             .delete()
     }
-    func getAddressDocumentId(completion: @escaping (String?) -> Void) {
+    func getAddressDocumentId(forAddress address: String, completion: @escaping (String?) -> Void) {
         guard let uId = uId else {
             completion(nil)
             return
@@ -103,6 +103,7 @@ class AddressViewModel: ObservableObject{
         db.collection("User")
             .document(uId)
             .collection("Address")
+            .whereField("address", isEqualTo: address)
             .getDocuments { (querySnapshot, error) in
                 guard let documents = querySnapshot?.documents else {
                     completion(nil)
@@ -112,7 +113,6 @@ class AddressViewModel: ObservableObject{
                 // Giả sử bạn chỉ quan tâm đến một tài liệu, nếu có
                 if let document = documents.first {
                     completion(document.documentID)
-                
                 } else {
                     completion(nil)
                 }

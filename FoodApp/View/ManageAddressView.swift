@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ManageAddressView: View {
     @StateObject var addressVM = AddressViewModel()
-    @State var selectedAddress: String = ""
+    @AppStorage("selectedAddress") var selectedAddress: String = ""
 
     var body: some View {
         NavigationStack{

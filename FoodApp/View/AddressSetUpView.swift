@@ -164,13 +164,12 @@ struct AddressUpdateView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .frame(height: showSuggestions ? 100 : 0)
-                    .animation(.easeInOut) // Add animation for smoother transition
-                }
+                    .animation(.easeInOut)                 }
             }
             .padding()
             VStack{
                 Button(action: {
-                    addressVm.getAddressDocumentId { documentId in
+                    addressVm.getAddressDocumentId(forAddress: userAddress.address) { documentId in
                         if let documentId = documentId {
                             addressVm.updateAddress(addressId: documentId)
                         } else {
@@ -192,10 +191,11 @@ struct AddressUpdateView: View {
             .padding(.bottom,50)
             Button(
                 action: {
-                    addressVm.getAddressDocumentId { documentId in
+                    addressVm.getAddressDocumentId(forAddress: userAddress.address) { documentId in
                         if let documentId = documentId{
                             addressVm.deleteAddress(id: documentId)
                             dismiss()
+                            print("You deleted \(documentId)")
                         }else{
                             print("Not found document to delete")
                         }
@@ -206,6 +206,7 @@ struct AddressUpdateView: View {
                         .font(Font.custom("Bebas Neue", size: 15))
                         .foregroundColor(.red)
                 })
+            Text(userAddress.id)
         }
     }
 }

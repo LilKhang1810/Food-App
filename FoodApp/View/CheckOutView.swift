@@ -32,7 +32,7 @@ struct CheckOutView: View {
                     Text("Home")
                         .font(Font.custom("Gill Sans", size: 20))
                     Spacer()
-                    NavigationLink(destination: AddressSetUpView()) {
+                    NavigationLink(destination: ManageAddressView()) {
                         Text("Change")
                             .font(Font.custom("Gill Sans", size: 20))
                             .foregroundColor(.orange)
