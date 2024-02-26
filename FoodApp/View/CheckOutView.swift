@@ -101,7 +101,7 @@ struct OrderConfirmView: View {
                         .frame(width: 350)
                         .multilineTextAlignment(.center)
                         .padding(.top,45)
-                    NavigationLink(destination: HomeView().environmentObject(AuthencationViewModel())) {
+                    NavigationLink(destination: MapView()) {
                         Text("Track my Order")
                             .font(Font.custom("Bebas Neue", size: 20))
                             .foregroundColor(Color("AccentColor"))

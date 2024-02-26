@@ -172,6 +172,7 @@ struct AddressUpdateView: View {
                     addressVm.getAddressDocumentId(forAddress: userAddress.address) { documentId in
                         if let documentId = documentId {
                             addressVm.updateAddress(addressId: documentId)
+                            dismiss()
                         } else {
                             print("Không tìm thấy documentId")
                         }

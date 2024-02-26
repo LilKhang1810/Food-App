@@ -25,10 +25,7 @@ struct ManageAddressView: View {
                                 HStack{
                                     Text(data.addressType)
                                         .font(Font.custom("Bebas Neue", size: 15))
-                                        .foregroundColor(.orange)
-                                    
-                                        Image(systemName: selectedAddress == data.id ? "checkmark" : "")
-                                        
+                                        .foregroundColor( selectedAddress == data.id ?.orange:.black)
                                     
                                     Spacer()
                                     NavigationLink(destination: AddressUpdateView(userAddress: Address(id: data.id, addressType: data.addressType, address: data.address, zipCode: data.zipCode, district: data.district))) {
@@ -38,7 +35,7 @@ struct ManageAddressView: View {
                                 }
                                 Text(data.address + ", " + data.district)
                                     .font(Font.custom("Gill Sans", size: 20))
-                                
+                                    .foregroundColor(selectedAddress == data.id ? .black : .black.opacity(0.5))
                             }
                             .padding(.vertical,20)
                             .onTapGesture {
