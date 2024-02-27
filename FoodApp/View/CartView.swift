@@ -20,46 +20,46 @@ struct CartView: View {
                         .padding(.top,30)
                     
                     ForEach(vm.foods, id: \.self) { item in
-                        NavigationLink(destination: DetailDishesView(product: Product(id: item.id, name: item.name, price: item.price, img_url: item.img_url, brand: item.brand, popular: item.popular, type: item.type), selectedType: item.type)) {
-                            HStack {
-                                AnimatedImage(url: URL(string: item.img_url))
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(height: 100)
-                                VStack(alignment:.leading){
-                                    HStack{
-                                        Text(item.name)
-                                            .font(.system(size: 15))
-                                            .frame(width:200,height:20)
-                                            .multilineTextAlignment(.leading)
-                                        Spacer()
-                                        Button(
-                                            action: {
-                                                vm.showingAlert = true
-                                            },
-                                            label: {
-                                                Image("trashIcon")
-                                            })
-                                        .alert(isPresented: $vm.showingAlert) {
-                                            Alert(title: Text("Are you sure?"),message: Text("You can choose again in detail"), primaryButton: .default(Text("OK")){
-                                                Task{
-                                                    await vm.deleteItem(id: item.id)
-                                                    
-                                                }
-                                            }, secondaryButton: .destructive(Text("Cancel")))
-                                        }
-                                    }
-                                    HStack{
-                                        Text("\(item.price*item.quantity)đ")
-                                            .font(Font.custom("Bebas Neue", size: 25))
-                                        Spacer()
-                                        HStack{
-                                            Text("Qty: \(item.quantity)")
-                                        }
-                                        .foregroundColor(.black)
+                        
+                        HStack {
+                            AnimatedImage(url: URL(string: item.img_url))
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 100)
+                            VStack(alignment:.leading){
+                                HStack{
+                                    Text(item.name)
+                                        .font(.system(size: 15))
+                                        .frame(width:200,height:20)
+                                        .multilineTextAlignment(.leading)
+                                    Spacer()
+                                    Button(
+                                        action: {
+                                            vm.showingAlert = true
+                                        },
+                                        label: {
+                                            Image("trashIcon")
+                                        })
+                                    .alert(isPresented: $vm.showingAlert) {
+                                        Alert(title: Text("Are you sure?"),message: Text("You can choose again in detail"), primaryButton: .default(Text("OK")){
+                                            Task{
+                                                await vm.deleteItem(id: item.id)
+                                                
+                                            }
+                                        }, secondaryButton: .destructive(Text("Cancel")))
                                     }
                                 }
+                                HStack{
+                                    Text("\(item.price)đ")
+                                        .font(Font.custom("Bebas Neue", size: 25))
+                                    Spacer()
+                                    HStack{
+                                        Text("Qty: \(item.quantity)")
+                                    }
+                                    .foregroundColor(.black)
+                                }
                             }
+                            
                             
                         }
                     }

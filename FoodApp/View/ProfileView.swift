@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @StateObject var profileVM: AuthencationViewModel = AuthencationViewModel()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button("Log Out"){
+            profileVM.signOut()
+        }
     }
 }
 

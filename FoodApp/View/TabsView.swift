@@ -33,7 +33,7 @@ struct TabsView: View {
                     Image(selectedTab == 4 ? "favoriteSelected": "favorite")
                 }
                 .tag(4)
-            Text("ProfileView")
+            ProfileView()
                 .tabItem {
                     Image(selectedTab == 5 ?"profileSelected": "profile")
                 }

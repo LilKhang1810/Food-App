@@ -49,6 +49,7 @@
 		22B14C7C2B5FA681003C4040 /* BrandShowAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B14C7B2B5FA681003C4040 /* BrandShowAllView.swift */; };
 		22D3D82A2B6BA1FD007EA698 /* PopularProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3D8292B6BA1FD007EA698 /* PopularProductView.swift */; };
 		22D3D82C2B6BA37A007EA698 /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3D82B2B6BA37A007EA698 /* TypeView.swift */; };
+		22DA7B952B8D7E110099514E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA7B942B8D7E110099514E /* ProfileView.swift */; };
 		22DCF77C2B81C4B000C46B41 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DCF77B2B81C4B000C46B41 /* FavoriteViewController.swift */; };
 		22E5FCD62B68AAB600F526BC /* PizzaOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5FCD52B68AAB600F526BC /* PizzaOptionViewModel.swift */; };
 		22E5FCD82B68AAC600F526BC /* BurgerOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5FCD72B68AAC600F526BC /* BurgerOptionViewModel.swift */; };
@@ -93,6 +94,7 @@
 		22B14C7B2B5FA681003C4040 /* BrandShowAllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandShowAllView.swift; sourceTree = "<group>"; };
 		22D3D8292B6BA1FD007EA698 /* PopularProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularProductView.swift; sourceTree = "<group>"; };
 		22D3D82B2B6BA37A007EA698 /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
+		22DA7B942B8D7E110099514E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		22DCF77B2B81C4B000C46B41 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		22E5FCD52B68AAB600F526BC /* PizzaOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaOptionViewModel.swift; sourceTree = "<group>"; };
 		22E5FCD72B68AAC600F526BC /* BurgerOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgerOptionViewModel.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				2296284F2B843C7800988D34 /* CheckOutView.swift */,
 				22FA57152B87856500EA4E96 /* ManageAddressView.swift */,
 				2226106B2B8C48F7001AB014 /* MapView.swift */,
+				22DA7B942B8D7E110099514E /* ProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				226E77732B581DA40002BAC3 /* LoginView.swift in Sources */,
 				2299EA822B78AB3A005D4741 /* CartViewController.swift in Sources */,
 				22670A332B5A7BBE00CCA4A2 /* AddressSetUpView.swift in Sources */,
+				22DA7B952B8D7E110099514E /* ProfileView.swift in Sources */,
 				228CBE212B581B1900EF5AC1 /* AuthencationViewModel.swift in Sources */,
 				225F60792B5BB84300084EBA /* HomeView.swift in Sources */,
 				22FA57162B87856500EA4E96 /* ManageAddressView.swift in Sources */,
@@ -467,6 +471,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodApp/Preview Content\"";
@@ -498,6 +503,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodApp/Preview Content\"";

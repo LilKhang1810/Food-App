@@ -44,13 +44,17 @@ struct MapViewContent: View {
     var body: some View {
         Map(selection: $selectedResult) {
             Marker("Your Home", coordinate:userLocation)
-            Marker("Driver", coordinate: restaurantLocation)
+            Annotation("Shipper", coordinate: restaurantLocation, anchor: .top) {
+                Image("motorbike")
+                    .resizable()
+                    .frame(width: 30,height: 30)
+            }
             if let route = route {
                 MapPolyline(route)
                     .stroke(Color("AccentColor"), lineWidth: 5)
             }
         }
-        .onChange(of: selectedResult) { _ in
+        .onChange(of: selectedResult) {
             getDirection()
         }
     }
