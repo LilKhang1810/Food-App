@@ -12,6 +12,7 @@ class AuthencationViewModel: ObservableObject{
     let auth = Auth.auth()
     @Published var signIn = false
     @Published var userName: String = ""
+    @Published var userEmail: String = ""
     private let uId = Auth.auth().currentUser?.uid
     var issignedIn: Bool{
         return auth.currentUser != nil
@@ -74,13 +75,16 @@ class AuthencationViewModel: ObservableObject{
         
         // Thực hiện truy vấn để lấy thông tin người dùng từ Firestore
         let userRef = db.collection("User").document(userID)
-        userRef.getDocument { (document, error) in
+        userRef.addSnapshotListener { (document, error) in
             if let document = document, document.exists {
                 // Lấy thông tin người dùng từ tài liệu
                 if let userData = document.data(),
-                   let userName = userData["name"] as? String {
+                   let userName = userData["name"] as? String,
+                   let userEmail = userData["email"] as? String
+                {
                     // Cập nhật tên của người dùng
                     self.userName = userName
+                    self.userEmail = userEmail
                 } else {
                     print("Không tìm thấy thông tin về tên của người dùng.")
                 }

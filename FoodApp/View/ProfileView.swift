@@ -10,12 +10,79 @@ import SwiftUI
 struct ProfileView: View {
     @StateObject var profileVM: AuthencationViewModel = AuthencationViewModel()
     var body: some View {
-        Button("Log Out"){
-            profileVM.signOut()
+        NavigationStack{
+            VStack{
+                ZStack{
+                    Circle()
+                        .frame(width: 110)
+                        .foregroundColor(Color("AccentColor"))
+                    Image("userImg")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                        .clipShape(.circle)
+                }
+                .padding(.bottom,70)
+                ForEach(SidebarTabs.allCases, id: \.self) { item in
+                    NavigationLink(destination: item.sideBarView) {
+                        HStack{
+                            item.icon
+                                .padding(.trailing)
+                            Text(item.rawValue)
+                                .foregroundColor(.black)
+                                .font(Font.custom("Gill Sans", size: 20))
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.black)
+                        }
+                        .padding()
+                    }
+                }
+                Button("Log Out"){
+                    profileVM.signOut()
+                }
+            }
+            
         }
     }
 }
 
 #Preview {
     ProfileView()
+}
+
+enum SidebarTabs: String, Hashable, CaseIterable{
+    case about = "About and Profile"
+    case paymentMethod = "Manage Payment Methods"
+    case addressManage = "Manage Addresses"
+    case orderHistory = "Order History"
+    case contactSupport = "Contact and Support"
+    var icon: Image{
+        switch self{
+        case .about:
+            return Image("about")
+        case .paymentMethod:
+            return Image("paymentMethod")
+        case .addressManage:
+            return Image("addressManage")
+        case .orderHistory:
+            return Image("orderHistory")
+        case .contactSupport:
+            return Image("contactSupport")
+        }
+    }
+    @ViewBuilder var sideBarView: some View {
+        switch self {
+        case .about:
+            AboutAndProfileView()
+        case .paymentMethod:
+            Text("Manage Payment Methods")
+        case .addressManage:
+           ManageAddressView()
+        case .orderHistory:
+            Text("Order History")
+        case .contactSupport:
+            Text("Contact and Support")
+        }
+    }
 }
