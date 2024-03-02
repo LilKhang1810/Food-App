@@ -43,7 +43,7 @@ struct AboutAndProfileView: View {
                     .textFieldStyle(OvalTextFieldStyle())
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
-                NavigationLink(destination: Text("Change Password")) {
+                NavigationLink(destination:ChangePasswordView()) {
                     HStack{
                         Image("lockIcon")
                             .padding(.trailing)

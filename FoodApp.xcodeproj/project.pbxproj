@@ -55,6 +55,7 @@
 		22E5FCD62B68AAB600F526BC /* PizzaOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5FCD52B68AAB600F526BC /* PizzaOptionViewModel.swift */; };
 		22E5FCD82B68AAC600F526BC /* BurgerOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5FCD72B68AAC600F526BC /* BurgerOptionViewModel.swift */; };
 		22E9F2472B6CE98C00223551 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E9F2462B6CE98C00223551 /* TabsView.swift */; };
+		22F0456F2B92D6B30029F2E0 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F0456E2B92D6B30029F2E0 /* ChangePasswordView.swift */; };
 		22FA57162B87856500EA4E96 /* ManageAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA57152B87856500EA4E96 /* ManageAddressView.swift */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,7 @@
 		22E5FCD52B68AAB600F526BC /* PizzaOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaOptionViewModel.swift; sourceTree = "<group>"; };
 		22E5FCD72B68AAC600F526BC /* BurgerOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgerOptionViewModel.swift; sourceTree = "<group>"; };
 		22E9F2462B6CE98C00223551 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
+		22F0456E2B92D6B30029F2E0 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		22FA57152B87856500EA4E96 /* ManageAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAddressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +208,7 @@
 				2226106B2B8C48F7001AB014 /* MapView.swift */,
 				22DA7B942B8D7E110099514E /* ProfileView.swift */,
 				22C927792B9021A500C8DEB7 /* AboutAndProfileView.swift */,
+				22F0456E2B92D6B30029F2E0 /* ChangePasswordView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				225C7F952B5EC32C00AC2E8D /* DetailDishesView.swift in Sources */,
 				225080C02B59719900D2D0F1 /* OnBoardView.swift in Sources */,
 				22670A372B5A7D4000CCA4A2 /* UserAddress.swift in Sources */,
+				22F0456F2B92D6B30029F2E0 /* ChangePasswordView.swift in Sources */,
 				221AF1352B83381100E05D48 /* FavoriteView.swift in Sources */,
 				22A041B62B73CF30000563E3 /* CartModel.swift in Sources */,
 				228CBE1F2B581AF800EF5AC1 /* ProductModel.swift in Sources */,

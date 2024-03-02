@@ -13,6 +13,10 @@ class AuthencationViewModel: ObservableObject{
     @Published var signIn = false
     @Published var userName: String = ""
     @Published var userEmail: String = ""
+    @Published  var currentPassword = ""
+    @Published var newPassword = ""
+    @Published  var confirmPassword = ""
+    @Published var errorMessage: String = ""
     private let uId = Auth.auth().currentUser?.uid
     var issignedIn: Bool{
         return auth.currentUser != nil
@@ -90,6 +94,31 @@ class AuthencationViewModel: ObservableObject{
                 }
             } else {
                 print("Tài liệu người dùng không tồn tại trong Firestore.")
+            }
+        }
+    }
+    func changePassword(){
+        guard let currentUser = Auth.auth().currentUser else {
+            print("Không có người dùng đang đăng nhập.")
+            return
+        }
+        let credential = EmailAuthProvider.credential(withEmail: currentUser.email!, password: currentPassword)
+        currentUser.reauthenticate(with: credential){result,error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                if self.newPassword == self.confirmPassword {
+                    currentUser.updatePassword(to: self.newPassword) { error in
+                        if let error = error {
+                            print(error.localizedDescription)
+                            self.errorMessage = "error.localizedDescription"
+                        } else {
+                            print("Password updated successfully.")
+                        }
+                    }
+                } else {
+                    self.errorMessage = "New password and confirm password do not match!"
+                }
             }
         }
     }

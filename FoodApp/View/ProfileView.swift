@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @StateObject var profileVM: AuthencationViewModel = AuthencationViewModel()
+    @StateObject var authenVM: AuthencationViewModel = AuthencationViewModel()
+    
     var body: some View {
         NavigationStack{
             VStack{
@@ -22,6 +23,8 @@ struct ProfileView: View {
                         .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
                         .clipShape(.circle)
                 }
+                Text("\(authenVM.userName)")
+                    .font(Font.custom("Gill Sans", size: 20))
                 .padding(.bottom,70)
                 ForEach(SidebarTabs.allCases, id: \.self) { item in
                     NavigationLink(destination: item.sideBarView) {
@@ -38,9 +41,23 @@ struct ProfileView: View {
                         .padding()
                     }
                 }
-                Button("Log Out"){
-                    profileVM.signOut()
-                }
+                Button(
+                    action: {
+                        authenVM.signOut()
+                    },
+                    label: {
+                        HStack{
+                            Image("Logout")
+                                .padding(.trailing)
+                            Text("Log Out")
+                                .foregroundColor(.black)
+                                .font(Font.custom("Gill Sans", size: 20))
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.black)
+                        }
+                        .padding()
+                })
             }
             
         }
