@@ -15,6 +15,8 @@ class CartViewController: ObservableObject{
     @Published var showingAlert: Bool = false
     @Published var messageAlert = ""
     @Published var titleAlert = ""
+    @Published var cartId = UUID().uuidString
+    @Published var isDeleting: Bool = false
     init(){
         fetchFood()
     }
@@ -64,5 +66,29 @@ class CartViewController: ObservableObject{
         titleAlert = title
         messageAlert = message
         showingAlert = true
+    }
+    func deleteCart() async {
+        guard let uId = uId else {
+            return
+        }
+
+        let cartRef = db.collection("User").document(uId).collection("Cart")
+
+        // Set isDeleting flag to true while deleting
+        isDeleting = true
+
+        do {
+            let snapshot = try await cartRef.getDocuments()
+            for document in snapshot.documents {
+                try await document.reference.delete()
+            }
+            self.foods = [] // Empty the local array as well
+            isDeleting = false // Reset flag upon successful deletion
+
+        } catch {
+            isDeleting = false // Reset flag even on error
+            print("Error deleting cart: \(error)")
+            self.showAlert(title: "Error", message: "Failed to delete entire cart. Please try again.")
+        }
     }
 }

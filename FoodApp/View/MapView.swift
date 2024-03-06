@@ -17,50 +17,57 @@ struct MapView: View {
         longitude: 106.66305
     )
     var body: some View {
-        ZStack{
-            VStack {
-                MapViewContent(selectedResult: $selectedResult, route: $route, travelTime: $travelTime)
+        NavigationStack{
+            ZStack{
                 
-            }
-            .onAppear {
-                self.selectedResult = MKMapItem(placemark: MKPlacemark(coordinate: self.restaurantLocation))
-            }
-            VStack(alignment: .leading){
-                (Text("The order will be delivered to you within ")
-                    .font(Font.custom("Bebas Neue", size: 20))
-                )
-                +
-                (Text("\(travelTime)")
-                    .font(Font.custom("Bebas Neue", size: 20))
-                    .foregroundColor(Color("AccentColor"))
-                )
+                VStack {
+                    MapViewContent(selectedResult: $selectedResult, route: $route, travelTime: $travelTime)
+                    
+                }
+                .onAppear {
+                    self.selectedResult = MKMapItem(placemark: MKPlacemark(coordinate: self.restaurantLocation))
+                }
+                VStack(alignment: .leading){
+                    (Text("The order will be delivered to you within ")
+                        .font(Font.custom("Bebas Neue", size: 20))
+                    )
+                    +
+                    (Text("\(travelTime)")
+                        .font(Font.custom("Bebas Neue", size: 20))
+                        .foregroundColor(Color("AccentColor"))
+                    )
+                    
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical)
+                .background{
+                    Color(.white)
+                }
+                .cornerRadius(10)
+                .padding(.horizontal,10)
+                .offset(y:200)
                 
+                VStack(alignment: .leading){
+                    Text("Has Taken food")
+                        .font(Font.custom("Bebas Neue", size: 30))
+                        .padding(.bottom)
+                    Text("The driver is delivering the goods to you")
+                        .font(Font.custom("Bebas Neue", size: 20))
+                    
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical)
+                .background{
+                    Color(.white)
+                }
+                .cornerRadius(10)
+                .padding(.horizontal,10)
+                .offset(y:300)
+                NavigationLink(destination: HomeView().environmentObject(AuthencationViewModel())) {
+                    Text("Back to home view")
+                }
             }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical)
-            .background{
-                Color(.white)
-            }
-            .cornerRadius(10)
-            .padding(.horizontal,10)
-            .offset(y:200)
-            
-            VStack(alignment: .leading){
-                Text("Has Taken food")
-                    .font(Font.custom("Bebas Neue", size: 30))
-                    .padding(.bottom)
-                Text("The driver is delivering the goods to you")
-                    .font(Font.custom("Bebas Neue", size: 20))
-                
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical)
-            .background{
-                Color(.white)
-            }
-            .cornerRadius(10)
-            .padding(.horizontal,10)
-            .offset(y:300)
+            .navigationBarBackButtonHidden()
         }
     }
 }

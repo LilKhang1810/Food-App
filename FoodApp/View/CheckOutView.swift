@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CheckOutView: View {
     let totalCash: Int
+    @EnvironmentObject var vm : CartViewController
     var body: some View {
         NavigationStack{
             VStack(alignment:.leading){
@@ -55,15 +56,23 @@ struct CheckOutView: View {
                     }
                 }
                 .padding(.horizontal,15)
-                NavigationLink(destination: OrderConfirmView()) {
-                    Text("Confirm Order")
-                        .font(Font.custom("Bebas Neue", size: 20))
-                        .foregroundColor(.white)
-                        .frame(width: 350,height: 50)
-                        .background(Color("AccentColor"))
-                        .cornerRadius(25)
+                Button(action: {
+                
+                }, label: {
+                    NavigationLink(destination: OrderConfirmView()) {
+                        Text("Confirm Order")
+                            .font(Font.custom("Bebas Neue", size: 20))
+                            .foregroundColor(.white)
+                            .frame(width: 350,height: 50)
+                            .background(Color("AccentColor"))
+                            .cornerRadius(25)
+                    }
+                })
+                .onAppear{
+                    Task{
+                        await vm.deleteCart()
+                    }
                 }
-            
                 .padding(.top,35)
                 .frame(maxWidth: .infinity,alignment: .center)
             }
@@ -75,7 +84,7 @@ struct CheckOutView: View {
 struct CheckOutView_Previews: PreviewProvider {
     static var previews: some View {
         CheckOutView(totalCash: 100000)
-
+            .environmentObject(CartViewController())
     }
 }
 
@@ -115,5 +124,6 @@ struct OrderConfirmView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }

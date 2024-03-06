@@ -75,7 +75,8 @@ struct CartView: View {
             }
             .padding(.trailing,220)
             .padding(.leading,30)
-            NavigationLink(destination: CheckOutView(totalCash: vm.foods.reduce(0){$0 + (Int($1.price*$1.quantity))})) {
+            
+            NavigationLink(destination: CheckOutView(totalCash: vm.foods.reduce(0){$0 + (Int($1.price*$1.quantity))}).environmentObject(vm)) {
                 Text("Proceed to checkout")
                     .font(Font.custom("Bebas Neue", size: 20))
                     .foregroundColor(.white)
