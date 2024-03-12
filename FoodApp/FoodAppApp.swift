@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 import FirebaseCore
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
@@ -24,5 +25,6 @@ struct FoodAppApp: App {
             MainVIew()
                 .environmentObject(AuthencationViewModel())
         }
+        .modelContainer(for:[Suggest.self])
     }
 }

@@ -12,7 +12,6 @@
 		22150D7F2B5E5C6500B85A74 /* BrandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22150D7E2B5E5C6500B85A74 /* BrandViewModel.swift */; };
 		221824172B73C4CC0011ACBE /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221824162B73C4CC0011ACBE /* CartView.swift */; };
 		221AF1352B83381100E05D48 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221AF1342B83381100E05D48 /* FavoriteView.swift */; };
-		2225C37D2B995E9500195634 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2225C37C2B995E9500195634 /* GoogleService-Info.plist */; };
 		2226106C2B8C48F7001AB014 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2226106B2B8C48F7001AB014 /* MapView.swift */; };
 		224A65B02B72773200A119FD /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A65AF2B72773200A119FD /* SearchView.swift */; };
 		225080BC2B595BB200D2D0F1 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225080BB2B595BB200D2D0F1 /* GetStartedView.swift */; };
@@ -44,6 +43,8 @@
 		228CBE1F2B581AF800EF5AC1 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228CBE1E2B581AF800EF5AC1 /* ProductModel.swift */; };
 		228CBE212B581B1900EF5AC1 /* AuthencationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228CBE202B581B1900EF5AC1 /* AuthencationViewModel.swift */; };
 		229628502B843C7800988D34 /* CheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296284F2B843C7800988D34 /* CheckOutView.swift */; };
+		22987D832BA086E700A24FE8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22987D822BA086E700A24FE8 /* GoogleService-Info.plist */; };
+		22987D852BA0877400A24FE8 /* Suggest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22987D842BA0877400A24FE8 /* Suggest.swift */; };
 		2299EA822B78AB3A005D4741 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2299EA812B78AB3A005D4741 /* CartViewController.swift */; };
 		22A041B62B73CF30000563E3 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A041B52B73CF30000563E3 /* CartModel.swift */; };
 		22B14C7C2B5FA681003C4040 /* BrandShowAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B14C7B2B5FA681003C4040 /* BrandShowAllView.swift */; };
@@ -65,7 +66,6 @@
 		22150D7E2B5E5C6500B85A74 /* BrandViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandViewModel.swift; sourceTree = "<group>"; };
 		221824162B73C4CC0011ACBE /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		221AF1342B83381100E05D48 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
-		2225C37C2B995E9500195634 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2226106B2B8C48F7001AB014 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		224A65AF2B72773200A119FD /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		225080BB2B595BB200D2D0F1 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
@@ -91,6 +91,8 @@
 		228CBE1E2B581AF800EF5AC1 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		228CBE202B581B1900EF5AC1 /* AuthencationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthencationViewModel.swift; sourceTree = "<group>"; };
 		2296284F2B843C7800988D34 /* CheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutView.swift; sourceTree = "<group>"; };
+		22987D822BA086E700A24FE8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		22987D842BA0877400A24FE8 /* Suggest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Suggest.swift; path = "../../../SwiftUI /Food-App/FoodApp/Model/Suggest.swift"; sourceTree = "<group>"; };
 		2299EA812B78AB3A005D4741 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		22A041B52B73CF30000563E3 /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		22B14C7B2B5FA681003C4040 /* BrandShowAllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandShowAllView.swift; sourceTree = "<group>"; };
@@ -151,7 +153,7 @@
 		228CBDF82B58158500EF5AC1 /* FoodApp */ = {
 			isa = PBXGroup;
 			children = (
-				2225C37C2B995E9500195634 /* GoogleService-Info.plist */,
+				22987D822BA086E700A24FE8 /* GoogleService-Info.plist */,
 				226E77762B58295B0002BAC3 /* Extension.swift */,
 				228CBE1B2B581AC000EF5AC1 /* ViewModel */,
 				228CBE1A2B581AB300EF5AC1 /* View */,
@@ -176,6 +178,7 @@
 		228CBE192B581A4300EF5AC1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				22987D842BA0877400A24FE8 /* Suggest.swift */,
 				228CBE1C2B581AEA00EF5AC1 /* User.swift */,
 				228CBE1E2B581AF800EF5AC1 /* ProductModel.swift */,
 				22670A362B5A7D4000CCA4A2 /* UserAddress.swift */,
@@ -302,7 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				228CBE012B58159300EF5AC1 /* Preview Assets.xcassets in Resources */,
-				2225C37D2B995E9500195634 /* GoogleService-Info.plist in Resources */,
+				22987D832BA086E700A24FE8 /* GoogleService-Info.plist in Resources */,
 				225080BE2B596BD700D2D0F1 /* Launch Screen.storyboard in Resources */,
 				228CBDFE2B58159300EF5AC1 /* Assets.xcassets in Resources */,
 			);
@@ -333,6 +336,7 @@
 				22670A352B5A7C2F00CCA4A2 /* AddressViewModel.swift in Sources */,
 				225C7F952B5EC32C00AC2E8D /* DetailDishesView.swift in Sources */,
 				225080C02B59719900D2D0F1 /* OnBoardView.swift in Sources */,
+				22987D852BA0877400A24FE8 /* Suggest.swift in Sources */,
 				22670A372B5A7D4000CCA4A2 /* UserAddress.swift in Sources */,
 				22F0456F2B92D6B30029F2E0 /* ChangePasswordView.swift in Sources */,
 				221AF1352B83381100E05D48 /* FavoriteView.swift in Sources */,
